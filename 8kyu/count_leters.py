@@ -10,13 +10,9 @@ If no occurrences can be found, a count of 0 should be returned.
 """
 
 my_string = "aaaaaaaaacccttttcacacacacact"
-my_letter = "t"
+my_letter = "a"
 
 def letter_count(s, l):
-    n = 0
-    for i in s:
-        if i == l:
-            n += 1
-    print(n)
+    print(s.count(l))
 
 letter_count(my_string, my_letter)
