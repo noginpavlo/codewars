@@ -11,17 +11,12 @@ If the string's length is even, return the middle 2 characters.
 
 """
 
-string = "tasdfasdfdgc"
+string = "tasasdfasdfasdfxfdgc"
 
 def get_middle(s):
-    s_len = len(s)
-    if s_len % 2 == 0:
-        middle_chars = s[int((s_len / 2) - 1)] + s[int(s_len / 2)]
-    else:
-        middle_chars = s[int(s_len / 2)]
-    middle_chars = str(middle_chars)
-    print(middle_chars)
-
-    return middle_chars
+    index, odd = divmod(len(s), 2)
+    result = s[index] if odd == 1 else s[index - 1:index + 1]
+    print(result)
+    return result
 
 get_middle(string)
