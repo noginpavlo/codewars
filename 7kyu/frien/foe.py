@@ -14,11 +14,7 @@ Output = []
 users_input = ["Ryan", "Kieran", "Jason", "Yous", "1234"]
 
 def friend_or_foe(l):
-    friends = []
-    for i in l:
-        if len(i) == 4:
-            friends.append(i)
-    print(friends)
-    return friends
+    return [i for i in l if len(i) == 4]
 
-friend_or_foe(users_input)
+result = friend_or_foe(users_input)
+print(result)
