@@ -10,11 +10,7 @@ txt = "abc"
 end = "bc"
 
 def solution(text, ending):
-    ending_len = len(ending)
-    if ending == text[-ending_len:]:
-        return True
-    else:
-        return False
+    return ending == text[-len(ending):]
 
 result = solution(txt, end)
 print(result)
