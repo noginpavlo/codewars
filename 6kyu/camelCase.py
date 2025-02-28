@@ -10,13 +10,7 @@ Example
 string = "camelCase"
 
 def solution(s):
-    new_s = ""
-    for d in s:
-        if d.isupper():
-            new_s += " " + d
-        else:
-            new_s += d
-    return new_s
+    return "".join(" " + l if l.isupper() else l for l in s)
 
 result = solution(string)
 print(result)
