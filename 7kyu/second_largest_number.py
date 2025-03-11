@@ -13,13 +13,9 @@ print(second_largest([1]))  # Expected: None
 variable = [10, 20, 4, 45, 99]
 
 def second_largest(l):
-    largest = max(l)
-    new_l = []
-    for i in l:
-        if i != largest:
-            new_l.append(i)
-    if not new_l:
+    if len(set(l)) <= 1:
         return None
-    return max(new_l)
+    l.remove(max(l))
+    return max(l)
 
 print(second_largest(variable))
