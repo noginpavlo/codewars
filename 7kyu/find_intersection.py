@@ -9,7 +9,7 @@ find_intersection([1, 2, 3], [4, 5, 6])  # Expected output: []
 """
 
 def find_intersection(l1, l2):
-    return [x for x in l1 if x in l2]
+    return list(set(l1) & set(l2))
 
-result = find_intersection([1, 2, 3], [4, 5, 6])
+result = find_intersection([1, 2, 3, 4], [3, 4, 5, 6])
 print(result)
