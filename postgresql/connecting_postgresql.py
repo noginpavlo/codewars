@@ -10,36 +10,41 @@ configconn = {
 }
 
 try:
-    # Connect to the database using the config dictionary
+    # Connect to the database
     conn = psycopg2.connect(**configconn)
     print("✅ Connected to the database!")
 
+    # Create a cursor object
     cur = conn.cursor()
 
-    # Create table if it doesn't exist
-    cur.execute("""
-        CREATE TABLE IF NOT EXISTS users (
-            id SERIAL PRIMARY KEY,
-            name VARCHAR(100),
-            email VARCHAR(100)
-        );
-    """)
-    conn.commit()
-    print("✅ Table created or already exists.")
+    # Check current user
+    cur.execute("SELECT current_user;")
+    print("Current User:", cur.fetchone())
 
-    # Insert sample data
-    cur.execute("INSERT INTO users (name, email) VALUES (%s, %s)", ("Alice", "alice@example.com"))
+    # Check if the 'users' table exists
+    cur.execute("SELECT table_schema, table_name FROM information_schema.tables WHERE table_name = 'users';")
+    print("Table Schema and Name:", cur.fetchone())
+
+    # Check table owner and privileges
+    cur.execute(
+        "SELECT tableowner, has_table_privilege('highlander95', 'public.users', 'select') "
+        "FROM pg_tables WHERE tablename = 'users';"
+    )
+    print("Table Owner and Privileges:", cur.fetchone())
+
+    # Insert sample data into public.users if table exists
+    cur.execute("INSERT INTO public.users (name, email) VALUES (%s, %s)", ("Alice", "alice@example.com"))
     conn.commit()
     print("✅ Data inserted.")
 
-    # Fetch and display all rows
-    cur.execute("SELECT * FROM users;")
+    # Fetch and display all rows from public.users
+    cur.execute("SELECT * FROM public.users;")
     rows = cur.fetchall()
     print("📋 Fetched rows:")
     for row in rows:
         print(row)
 
-    # Clean up
+    # Clean up: Close the cursor and connection
     cur.close()
     conn.close()
     print("✅ Connection closed.")
