@@ -7,9 +7,7 @@ This repository contains my Python solutions to Codewars problems, organized by 
 
 ## 🚀 Purpose
 
-- Practice and improve Python skills  
-- Write clean, efficient, and readable code  
-- Keep track of progress on Codewars  
+- store solutions to use occasionally as code snippets
 
 ## 🛠️ Usage
 
