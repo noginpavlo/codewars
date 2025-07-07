@@ -54,8 +54,29 @@ class Iterator:
 
 my_iterator = Iterator(12)
 
+"""
+Now the declaration of the class has __iter__ and __next__, these method kind
+of make sense.
+So now I can safly set that Iterator class is an actual iterator.
+"""
+
 print(f"Does my_iterator have __iter__?: {hasattr(my_iterator, '__iter__')}")
 print(f"Does my_iterator have __next__?: {hasattr(my_iterator, '__next__')}")
 
 for n in my_iterator:
     print(n)
+
+
+# What I want to create not is generator function
+def letter_parser(string):
+    for letter in string:
+        yield letter
+
+
+gen = letter_parser("here some test to be parsed")
+
+print(next(gen))
+print(next(gen))
+print(next(gen))
+print(next(gen))
+print(next(gen))
