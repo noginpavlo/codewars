@@ -15,7 +15,7 @@ n-tuples of cycled iterable.
 my_list = [1, 2, 3]
 
 
-def gen(n: int, iterable: list[int]):
+def gen(n, iterable: list[int]):
     index = 0
     iterations_done = 0
     while iterations_done < n:
