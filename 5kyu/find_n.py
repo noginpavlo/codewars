@@ -55,6 +55,5 @@ def duplicate_or_unique(l):
         return find_duplicate()
 
 
-result = duplicate_or_unique(
-    [9, 8, 7, 1, 2, 3, 9, 7, 1, 2, 3, 4, 4, 5, 5, 6, 6])
+result = duplicate_or_unique([9, 8, 7, 1, 2, 3, 9, 7, 1, 2, 3, 4, 4, 5, 5, 6, 6])
 print(result)
