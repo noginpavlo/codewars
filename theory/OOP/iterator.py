@@ -1,6 +1,6 @@
 """
 Here I will play with iterators a little bit by creating iterator classes
-and iteratin over them.
+and iterating over them.
 """
 
 
@@ -57,7 +57,7 @@ my_iterator = Iterator(12)
 """
 Now the declaration of the class has __iter__ and __next__, these method kind
 of make sense.
-So now I can safly set that Iterator class is an actual iterator.
+So now I can safely set that Iterator class is an actual iterator.
 """
 
 print(f"Does my_iterator have __iter__?: {hasattr(my_iterator, '__iter__')}")
