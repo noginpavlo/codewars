@@ -1,4 +1,4 @@
-my_list = [1, 23, 4, 5, -6, 7, -8, 9, -12]
+my_list = [1, 23, 4, -5, -6, 7, -8, 9, -12]
 
 
 def some_function(some_list: list[int]) -> list[int]:
