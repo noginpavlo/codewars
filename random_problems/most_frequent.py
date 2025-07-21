@@ -1,9 +1,7 @@
 from collections import Counter
 
 """
-Write a function that returns the most frequent element in a list.
-If there are multiple elements with the same highest frequency,
-return any one of them.
+Write a function that returns the most frequent element in a list. If there are multiple elements with the same highest frequency, return any one of them.
 """
 
 my_list = [1, 3, 2, 1, 4, 1]  # expected 1
