@@ -36,19 +36,19 @@ class GoodClass:
 
 class DoFitstThing:
 
-    def do_the_thing(self, good_class): #  in this function good_class expects an instance of GoodClass to be passed as an argument
+    def do_the_thing(self, good_class: GoodClass): #  in this function good_class expects an instance of GoodClass to be passed as an argument
         pass
 
 
 class DoSecontThing:
 
-    def do_the_thing(self, good_class):
+    def do_the_thing(self, good_class: GoodClass):
         pass
 
 
 class DoThirdThing:
 
-    def do_the_thing(self, good_class):
+    def do_the_thing(self, good_class: GoodClass):
         pass
 
 """
