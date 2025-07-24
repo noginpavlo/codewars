@@ -70,7 +70,7 @@ class Event:
 class LoginEvent(Event):
 
     @staticmethod
-    def meets_condition(event_data: dict):
+    def meets_condition(event_data: dict) -> bool:
         return (
             event_data["before"]["session"] == 0
             and event_data["after"]["session"] == 1
@@ -80,7 +80,7 @@ class LoginEvent(Event):
 class LogoutEvent(Event):
 
     @staticmethod
-    def meets_condition(event_data: dict):
+    def meets_condition(event_data: dict) -> bool:
         return (
             event_data["before"]["session"] == 1
             and event_data["after"]["session"] == 0
