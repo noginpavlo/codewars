@@ -8,6 +8,7 @@ Error codes:
     PerseptionError - 1
 """
 
+
 # interface
 class Error:
     def __init__(self, code: int):
@@ -29,6 +30,12 @@ class PerceptionError(Error):
     @staticmethod
     def meet_condition(error_code) -> bool:
         return error_code == 1
+
+
+class VibeCodingError(Error):
+    @staticmethod
+    def meet_condition(error_code) -> bool:
+        return error_code == 123
 
 
 class UnknownError(Error):

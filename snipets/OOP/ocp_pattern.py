@@ -1,12 +1,13 @@
 """
 This is an OCP SOLID pattern that I found in 'Clean Code in Python'.
-The pattern helps to avoid creating a lot of if/elif statements by createing classes.
+The pattern helps to avoid creating a lot of if/elif stkatements by creating classes.
 """
 
 """
 => Basically we need to identify the event type that happened in some system.
-=> The system sends formated in a particular way data. We need to read the data and determine
-the event type. 
+=> The system sends formatted in a particular way data.
+We need to read the data and determine
+the event type.
 
                     +----------------------+
                     |  High-Level Module   |
@@ -57,17 +58,19 @@ the event type.
 
 
 """Interface: Event"""
+
+
 class Event:
     def __init__(self, raw_data):
         self.raw_data = raw_data
 
-    @staticmethod
-    def meets_condition(event_data: dict) -> bool: #  @staticmethod does not take self parameter btw.
+    @staticmethod  # @staticmethod does not take self parameter btw.
+    def meets_condition(raw_data: dict[str, str]) -> bool:
         return False
 
 
-"""Low-level Module: LoginEvent, LogoutEvent, UnknownEvent"""
 class LoginEvent(Event):
+    """Low-level Module: LoginEvent, LogoutEvent, UnknownEvent"""
 
     @staticmethod
     def meets_condition(event_data: dict) -> bool:
@@ -88,13 +91,18 @@ class LogoutEvent(Event):
 
 
 class UnknownEvent(Event):
-    """This is a Null Object Pattern. It returns itself(UnknownEven object) and does nothing when event in unknown"""
+    """
+    This is a Null Object Pattern. It returns itself(UnknownEven object)
+    and does nothing when event in unknown
+    """
 
 
 class SystemMonitor:
-    """This class identifies events that occur in the system. It is a High-level Module"""
+    """
+    This class identifies events that occur in the system. It is a High-level Module
+    """
 
-    def __init__(self, event_data: dict):
+    def __init__(self, event_data: dict[str, str]):
         self.event_data = event_data
 
     def identify_event(self):
