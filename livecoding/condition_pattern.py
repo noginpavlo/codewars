@@ -15,26 +15,26 @@ class Error:
         self.code = code
 
     @staticmethod
-    def meet_condition(code) -> bool:
+    def meet_condition(error_code: int) -> bool:
         return False
 
 
 # low-level module
 class LogicError(Error):
     @staticmethod
-    def meet_condition(error_code):
+    def meet_condition(error_code: int) -> bool:
         return error_code == 0
 
 
 class PerceptionError(Error):
     @staticmethod
-    def meet_condition(error_code) -> bool:
+    def meet_condition(error_code: int) -> bool:
         return error_code == 1
 
 
 class VibeCodingError(Error):
     @staticmethod
-    def meet_condition(error_code) -> bool:
+    def meet_condition(error_code: int) -> bool:
         return error_code == 123
 
 
@@ -48,7 +48,7 @@ class ErrorChecker:
     def __init__(self, error_code: int):
         self.error_code = error_code
 
-    def identify_error_type(self):
+    def identify_error_type(self) -> Error:
         for error_cls in Error.__subclasses__():
             try:
                 if error_cls.meet_condition(self.error_code):

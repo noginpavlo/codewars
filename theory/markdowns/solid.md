@@ -121,6 +121,55 @@ class SystemMonitor:
 
 > **OCP encourages extending behavior via new abstractions, not rewriting old ones.**
 
+## Extending the Events System
+
+This design shows how easily we can extend the system without changing existing code.
+
+Imagine a new requirement: we now want to support events for transactions that users perform on the monitored system.
+
+To handle this, we simply add a new class for the new event type. No changes are needed in the rest of the logic. This demonstrates that the system is truly extensible.
+
+Here’s the new class:
+
+```python
+# openclosed_3.py
+class TransactionEvent(Event):
+    """Represents a transaction that has just occurred on the system."""
+
+    @staticmethod
+    def meets_condition(event_data: dict):
+        return event_data["after"].get("transaction") is not None
+```
+
+Assuming the rest of the previous implementation stays the same, we can verify that both old and new events work as expected:
+
+```python
+>>> l1 = SystemMonitor({"before": {"session": 0}, "after": {"session": 1}})
+>>> l1.identify_event().__class__.__name__
+'LoginEvent'
+
+>>> l2 = SystemMonitor({"before": {"session": 1}, "after": {"session": 0}})
+>>> l2.identify_event().__class__.__name__
+'LogoutEvent'
+
+>>> l3 = SystemMonitor({"before": {"session": 1}, "after": {"session": 1}})
+>>> l3.identify_event().__class__.__name__
+'UnknownEvent'
+
+>>> l4 = SystemMonitor({"after": {"transaction": "Tx001"}})
+>>> l4.identify_event().__class__.__name__
+'TransactionEvent'
+```
+
+### Why This Matters
+
+Notice: the `SystemMonitor.identify_event()` method didn't change at all when we added the new event type. That means it's **closed for modification** — we didn’t touch the existing logic.
+
+At the same time, the `Event` class was **open for extension** — we could easily add a new type of event by creating a subclass.
+
+This is the core idea behind the **Open/Closed Principle**:  
+> When new requirements appear, we add new code rather than modify existing, working code.
+
 ### 🧠 Final Thoughts on the Open/Closed Principle
 
 - **Polymorphism is key** to effectively applying OCP.
@@ -146,4 +195,3 @@ class SystemMonitor:
 - OCP enables change through **extension**, not modification.
 - Rely on **polymorphic abstractions** to encapsulate behavior.
 - Protect the stability of your system by isolating changes and anticipating future growth areas.
-
