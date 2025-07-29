@@ -15,14 +15,15 @@ with objects of type 'S' — without breaking the program.
 
 
 """
-So basically a subclass has to be ableto do everyting that a parent class does
+So basically a subclass has to be ableto do everything that a parent class does
 """
 
 """
 Context:
-All birds can fly. It is false in real life. But let's say it is what our programm assumes.
-Let's take a pinguin which is a bird. Pinguin cannot fly (in reality). If Pinguin is a subclass
-of Bird parrent class, it violates LSP.
+All birds can fly. It is false in real life.
+But let's say it is what our program assumes.
+Let's take a pinguin which is a bird. Pinguin cannot fly (in reality).
+If Pinguin is a subclass of Bird parent class, it violates LSP.
 """
 
 
@@ -34,14 +35,22 @@ class DeadBird:
 
 class Pinguin(DeadBird):
     def fly(self):
-        print("I cannot fly, because I am a pinguin which is a bird technically, but I can't.")
+        print(
+                """
+                I cannot fly, because I am a pinguin, which is a bird technically,
+                but I can't.
+                """
+        )
 
 
-"""Barbara Liskov doesn't care if you are pinguin, you have to fly because she say so. If not, she KILLS YOU"""
+"""Barbara Liskov doesn't care if you are pinguin, you have to fly because she say so.
+If not, she KILLS YOU"""
 
-# now to satisfy Barbara we need to create a Bird class and 2 more classes (that can and cannot fly)
+
+# now to satisfy Barbara we need to create a Bird class and 2 more classes
+# (that can and cannot fly)
 class Bird:
-    pass #  this class can contain anything that is also acievable in child classes
+    pass  # this class can contain anything that is also achievable in child classes
 
 
 class FlyingBird(Bird):

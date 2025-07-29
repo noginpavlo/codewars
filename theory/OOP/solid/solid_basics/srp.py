@@ -3,10 +3,12 @@ SINGLE RESPONSIBILITY PRINCIPLE
 =============================================================================================
 
 is:
-=> A class should have only one reason to change, meaning it should have only one job or responsibility.
+=> A class should have only one reason to change,
+meaning it should have only one job or responsibility.
 """
 
-# let's defind a BAD class that handles 3 things at a time
+
+# let's defined a BAD class that handles 3 things at a time
 class BadClass:
     def __init__(self, data):
         self.bad_data = data
@@ -19,6 +21,7 @@ class BadClass:
 
     def do_third_thing(self):
         pass
+
 
 """
 Such bad class as above invokes following problems potentially:
@@ -35,21 +38,23 @@ class GoodClass:
 
 
 class DoFitstThing:
-
-    def do_the_thing(self, good_class: GoodClass): #  in this function good_class expects an instance of GoodClass to be passed as an argument
+    """
+    In this function good_class expects an instance of
+    GoodClass to pass it as an argument
+    """
+    def do_the_thing(self, good_class: GoodClass):
         pass
 
 
 class DoSecontThing:
-
     def do_the_thing(self, good_class: GoodClass):
         pass
 
 
 class DoThirdThing:
-
     def do_the_thing(self, good_class: GoodClass):
         pass
+
 
 """
 This code follows SRP
