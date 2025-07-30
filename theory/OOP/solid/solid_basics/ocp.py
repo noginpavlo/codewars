@@ -67,7 +67,7 @@ BY THE WAY. These 2 code blocks are not equivalent to each other.
 animal in the first place and then just call it.
 
 If you want to see how conditional logic is implemented following OCP check
-/codewars/theory/OOP/solid/ocp_pattern.py
+/codewars/theory/OOP/solid/solid_clean_code/ocp_pattern.py
 """
 
 """

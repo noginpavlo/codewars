@@ -4,6 +4,7 @@ This example follows DIP but violates OCP so be aware that his code is wrong,
 it only useful to examplify DIP. Do not follow these practices!!!
 """
 from abc import ABC, abstractmethod
+
 """
 D — Dependency Inversion Principle (DIP)
 ===============================================================================
@@ -67,9 +68,9 @@ class BadDeviceManager:
 
     def use_tablet(self):
         # Directly instantiating concrete class inside method, no dependency injection
-        tablet = BadTablet()  # high-lvl module depends directly on low-lvl module
-        tablet.power_on()
-        tablet.browse_internet()
+        tablet1 = BadTablet()  # high-lvl module depends directly on low-lvl module
+        tablet1.power_on()
+        tablet1.browse_internet()
 
 
 """
@@ -130,8 +131,10 @@ class Tablet(Electric, InternetAccessing):
 # implement High-level Module code with dependency injection
 # (depends on interface, not on Low-level Module)
 class DeviceManager:
-    # on this line don't get confused. caller = Callable|None is a type annotation.
-    # But = None is a default value of caller
+    """
+    On this line don't get confused. caller = Callable|None is a type annotation.
+    But = None is a default value of caller
+    """
     def __init__(
             self,
             power: Electric,

@@ -15,8 +15,10 @@ XO("zzoo") => false
 
 ss = "xoxxxxxx"
 
-def xo(s):
+
+def xo(s: str) -> bool:
     return s.lower().count("x") == s.lower().count("o")
+
 
 result = xo(ss)
 print(result)

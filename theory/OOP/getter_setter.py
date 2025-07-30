@@ -25,14 +25,13 @@ class Dog:
     def age(self, value: int):
         if value < 0:
             raise ValueError("The age is not valid. The age must be > 0")
-        elif value > 29:
+        if value > 29:
             raise ValueError(
                 """The age you provided exedes the longes-lived
             dog age which is 29 y.o., lived by Bluey from Australia.
             Please provide the confirmation of dog's age."""
             )
-        else:
-            self._age = value
+        self._age = value
 
     def bark(self):
         return f"Woof, my name is {self.name}, I am {self.age} yers old."
