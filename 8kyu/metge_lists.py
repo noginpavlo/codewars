@@ -8,7 +8,9 @@ merge_sorted_lists([], [1, 2, 3])  # Expected output: [1, 2, 3]
 merge_sorted_lists([5, 10], [])  # Expected output: [5, 10]
 """
 
+
 def merge_sorted_lists(l1, l2):
     return sorted(l1 + l2)
+
 
 print(merge_sorted_lists([1, 3, 5], [2, 4, 6]))

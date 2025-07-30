@@ -3,10 +3,8 @@ class Person:
         self.name = name
         self.age = age
 
-
     def __str__(self):
         return f"You are {self.age} years old, {self.name}"
-
 
     def __repr__(self):
         """Official string representation: For developers/ debugging"""

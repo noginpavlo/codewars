@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+
 """
 O — Open/Closed Principle (OCP)
 =============================================================================
@@ -40,6 +41,7 @@ class Animal(ABC):
     I want the type of animal to be specifies by creating each class for each
     animal type.
     """
+
     @abstractmethod
     def make_sound(self):
         pass

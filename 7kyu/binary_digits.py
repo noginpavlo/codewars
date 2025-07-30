@@ -18,8 +18,10 @@ Examples:
 
 my_list = [1, 1, 1, 1]
 
+
 def converter(l):
-    return (l[0]*2**3)+(l[1]*2**2)+(l[2]*2**1)+(l[3]*2**0)
+    return (l[0] * 2**3) + (l[1] * 2**2) + (l[2] * 2**1) + (l[3] * 2**0)
+
 
 result = converter(my_list)
 print(result)

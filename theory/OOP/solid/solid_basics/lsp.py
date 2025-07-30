@@ -13,7 +13,6 @@ If 'S' is a subclass of 'T', then objects of type 'T' can be replaced
 with objects of type 'S' — without breaking the program.
 """
 
-
 """
 So basically a subclass has to be ableto do everything that a parent class does
 """
@@ -36,7 +35,7 @@ class DeadBird:
 class Pinguin(DeadBird):
     def fly(self):
         print(
-                """
+            """
                 I cannot fly, because I am a pinguin, which is a bird technically,
                 but I can't.
                 """

@@ -9,8 +9,10 @@ solution('abc', 'd') # returns false
 txt = "abc"
 end = "bc"
 
+
 def solution(text, ending):
-    return ending == text[-len(ending):]
+    return ending == text[-len(ending) :]
+
 
 result = solution(txt, end)
 print(result)

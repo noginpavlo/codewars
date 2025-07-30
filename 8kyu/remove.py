@@ -5,7 +5,19 @@ Example:
 ["Keep", "Remove", "Keep", "Remove", "Keep", ...] --> ["Keep", "Keep", "Keep", ...]
 """
 
-array = ["Keep", "Remove", "Keep", "Remove", "Keep", "Keep", "Remove", "Keep", "Remove", "Keep"]
+array = [
+    "Keep",
+    "Remove",
+    "Keep",
+    "Remove",
+    "Keep",
+    "Keep",
+    "Remove",
+    "Keep",
+    "Remove",
+    "Keep",
+]
+
 
 def remove(a):
     print(a)
@@ -14,5 +26,6 @@ def remove(a):
             a.remove(i)
     print(a)
     return
+
 
 remove(array)

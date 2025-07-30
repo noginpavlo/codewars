@@ -7,9 +7,10 @@ or other sequence of symbols that reads the same backwards as forwards, such as 
 
 string = "aaaaaaaaaaaaaa"
 
+
 def is_palindrome(s):
     return s.lower() == s[::-1].lower()
 
+
 result = is_palindrome(string)
 print(result)
-

@@ -42,6 +42,7 @@ class DoFitstThing:
     In this function good_class expects an instance of
     GoodClass to pass it as an argument
     """
+
     def do_the_thing(self, good_class: GoodClass):
         pass
 

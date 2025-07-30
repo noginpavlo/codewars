@@ -11,7 +11,7 @@ Output: True
 
 
 def is_palindrome(string: str) -> bool:
-    filtered = ''.join(char.lower() for char in string if char.isalnum())
+    filtered = "".join(char.lower() for char in string if char.isalnum())
     return filtered == filtered[::-1]
 
 

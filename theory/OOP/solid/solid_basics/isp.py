@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+
 """
 I — Interface Segregation Principle (ISP)
 ===================================================================
@@ -24,39 +25,62 @@ Tablet  	❌   |         	 ✅             | 	✅
 # let's VIOLATE the ISP
 class SmartDevice(ABC):  # this interface is too conplex
     @abstractmethod
-    def call(self): pass  # tablet will not be able to
+    def call(self):
+        pass  # tablet will not be able to
+
     @abstractmethod
-    def browse_internet(self): pass  # old phone will not be able to
+    def browse_internet(self):
+        pass  # old phone will not be able to
+
     @abstractmethod
-    def power_on(self): pass
+    def power_on(self):
+        pass
+
     @abstractmethod
-    def power_off(self): pass
+    def power_off(self):
+        pass
 
 
 class BadOldPhone(SmartDevice):
-    def call(self): print("Calling...")
+    def call(self):
+        print("Calling...")
 
     def browse_internet(self):  # cannot borowse internet
         raise NotImplementedError("No internet access")
 
-    def power_on(self): print("Powering on")
-    def power_off(self): print("Shutting down")
+    def power_on(self):
+        print("Powering on")
+
+    def power_off(self):
+        print("Shutting down")
 
 
 class BadTablet(SmartDevice):
     def call(self):  # cannot call
         raise NotImplementedError("Tablets can't call")
 
-    def browse_internet(self): print("Browsing internet")
-    def power_on(self): print("Powering on")
-    def power_off(self): print("Shutting down")
+    def browse_internet(self):
+        print("Browsing internet")
+
+    def power_on(self):
+        print("Powering on")
+
+    def power_off(self):
+        print("Shutting down")
 
 
 class BadNewPhone(SmartDevice):
-    def call(self): print("Calling...")
-    def browse_internet(self): print("Browsing internet")
-    def power_on(self): print("Powering on")
-    def power_off(self): print("Shutting down")
+    def call(self):
+        print("Calling...")
+
+    def browse_internet(self):
+        print("Browsing internet")
+
+    def power_on(self):
+        print("Powering on")
+
+    def power_off(self):
+        print("Shutting down")
 
 
 """
@@ -71,19 +95,24 @@ It can't call anywhay, why bother explicitly defining it?)
 # now let's separate dubious interface and create multiple small ones following ISP
 class Hardware(ABC):
     @abstractmethod
-    def power_on(self): pass
+    def power_on(self):
+        pass
+
     @abstractmethod
-    def power_off(self): pass
+    def power_off(self):
+        pass
 
 
 class Callable(ABC):
     @abstractmethod
-    def call(self): pass
+    def call(self):
+        pass
 
 
 class InternetAccessing(ABC):
     @abstractmethod
-    def access_internet(self): pass
+    def access_internet(self):
+        pass
 
 
 """

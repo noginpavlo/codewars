@@ -12,9 +12,14 @@ Example:
 
 words = ["apple", "banana", "pear", "kiwi", "ki", "orange"]
 
+
 def say(words_l):
-    return list(filter(lambda word : word[0] in ["a", "e", "i", "o", "u"] and len(word) > 3, words_l))
+    return list(
+        filter(
+            lambda word: word[0] in ["a", "e", "i", "o", "u"] and len(word) > 3, words_l
+        )
+    )
+
 
 result = say(words)
 print(result)
-

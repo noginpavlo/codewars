@@ -12,8 +12,10 @@ Expected Output:
 
 n_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
+
 def get_evens(some_list):
     return list(filter(lambda x: x % 2 == 0, some_list))
+
 
 result = get_evens(n_list)
 print(result)

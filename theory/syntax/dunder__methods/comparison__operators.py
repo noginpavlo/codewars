@@ -12,6 +12,7 @@ class Person:
         else:
             return False
 
+
 p1 = Person("Josselin Beaumont", 42)
 p2 = Person("Pablo Escobar", 33)
 

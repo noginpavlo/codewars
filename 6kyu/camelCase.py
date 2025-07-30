@@ -9,8 +9,10 @@ Example
 
 string = "camelCase"
 
+
 def solution(s):
     return "".join(" " + l if l.isupper() else l for l in s)
+
 
 result = solution(string)
 print(result)

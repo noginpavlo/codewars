@@ -8,8 +8,10 @@ remove_duplicates(["apple", "banana", "apple", "cherry"])  # Expected output: ["
 remove_duplicates([1, 1, 1, 1])  # Expected output: [1]
 """
 
+
 def remove_duplicates(l):
     unique_elements = set()
     return [x for x in l if not (x in unique_elements or unique_elements.add(x))]
+
 
 print(remove_duplicates([1, 2, 2, 3, 4, 4, 5]))

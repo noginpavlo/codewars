@@ -15,9 +15,10 @@ Expected output:
 
 input_list = [1, 2, 3, 4, 5]
 
+
 def process_num(my_list):
     return [n * 3 if n % 2 != 0 else n // 2 for n in my_list]
 
+
 result = process_num(input_list)
 print(result)
-

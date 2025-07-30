@@ -11,9 +11,11 @@ is_palindrome("hello")  # should return False
 
 variable = "A man a plan a canal Panama"
 
+
 def is_palindrome(s):
     s_purified = s.replace(" ", "").lower()
     return s_purified == s_purified[::-1]
+
 
 result = is_palindrome(variable)
 print(result)

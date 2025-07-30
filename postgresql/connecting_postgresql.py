@@ -6,7 +6,7 @@ configconn = {
     "user": "highlander95",
     "password": "qazwsxedc12",
     "host": "localhost",
-    "port": "5432"
+    "port": "5432",
 }
 
 try:
@@ -22,7 +22,9 @@ try:
     print("Current User:", cur.fetchone())
 
     # Check if the 'users' table exists
-    cur.execute("SELECT table_schema, table_name FROM information_schema.tables WHERE table_name = 'users';")
+    cur.execute(
+        "SELECT table_schema, table_name FROM information_schema.tables WHERE table_name = 'users';"
+    )
     print("Table Schema and Name:", cur.fetchone())
 
     # Check table owner and privileges
@@ -33,7 +35,10 @@ try:
     print("Table Owner and Privileges:", cur.fetchone())
 
     # Insert sample data into public.users if table exists
-    cur.execute("INSERT INTO public.users (name, email) VALUES (%s, %s)", ("Alice", "alice@example.com"))
+    cur.execute(
+        "INSERT INTO public.users (name, email) VALUES (%s, %s)",
+        ("Alice", "alice@example.com"),
+    )
     conn.commit()
     print("✅ Data inserted.")
 

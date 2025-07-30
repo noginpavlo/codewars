@@ -3,7 +3,6 @@ class Person:
         self.name = name
         self.age = age
 
-
     def __add__(self, other):
         if isinstance(other, Person):
             new_age = self.age + other.age
@@ -12,9 +11,9 @@ class Person:
         else:
             return NotImplemented
 
-
     def __str__(self):
         return f"{self.name} are {self.age} years old in total!"
+
 
 p1 = Person("Josselin Beaumont", 48)
 p2 = Person("Pavlo Nohin", 29)

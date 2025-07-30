@@ -12,10 +12,10 @@ Example:
 
 strings = ["1", "2", "3", "4", "5"]
 
+
 def convert(str_l):
     return list(map(lambda x: int(x), str_l))
 
 
 result = convert(strings)
 print(result)
-

@@ -11,8 +11,10 @@ are_anagrams("hello", "world")    # should return False
 string1 = "aaaadzdd"
 string2 = "ddddaaaa"
 
+
 def are_anagrams(a, b):
     return sorted(a) == sorted(b)
+
 
 result = are_anagrams("listen", "silent")
 print(result)

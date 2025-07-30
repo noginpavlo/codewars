@@ -11,11 +11,11 @@ Example:
 """
 
 people = [("Alice", 30), ("Bob", 25), ("Eve", 35)]
- 
+
+
 def age_sorting(ppl_list):
-    return list(sorted(ppl_list, key=lambda x : x[1]))
+    return list(sorted(ppl_list, key=lambda x: x[1]))
 
 
 result = age_sorting(people)
 print(result)
-

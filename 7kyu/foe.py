@@ -13,8 +13,10 @@ Output = []
 
 users_input = ["Ryan", "Kieran", "Jason", "Yous", "1234"]
 
+
 def friend_or_foe(l):
     return [i for i in l if len(i) == 4]
+
 
 result = friend_or_foe(users_input)
 print(result)

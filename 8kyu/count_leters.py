@@ -12,7 +12,9 @@ If no occurrences can be found, a count of 0 should be returned.
 my_string = "aaaaaaaaacccttttcacacacacact"
 my_letter = "a"
 
+
 def letter_count(s, l):
     print(s.count(l))
+
 
 letter_count(my_string, my_letter)

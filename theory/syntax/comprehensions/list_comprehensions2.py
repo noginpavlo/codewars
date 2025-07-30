@@ -16,12 +16,14 @@ Example:
 
 words = ["heLLo", "WorLD", "PYTHON", "coDing"]
 
+
 def custom_function(word):
     return word.capitalize()
 
 
 def result_function(wrds):
     return [custom_function(word) for word in wrds]
+
 
 result = result_function(words)
 print(result)

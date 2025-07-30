@@ -3,6 +3,7 @@ WARNING!!!
 This example follows DIP but violates OCP so be aware that his code is wrong,
 it only useful to examplify DIP. Do not follow these practices!!!
 """
+
 from abc import ABC, abstractmethod
 
 """
@@ -60,6 +61,7 @@ class BadTablet:
 
 class BadDeviceManager:
     """High-level Module by the way"""
+
     def use_old_phone(self):
         # Directly instantiating concrete class inside method, no dependency injection
         phone = BadOldPhone()  # high-lvl module depends directly on low-lvl module
@@ -79,6 +81,7 @@ This makes High-level Module depend on Low-level Moule, not interface.
 
 
 # now let's implement the code properly following DIP
+
 
 # implementing interfaces first
 class Electric(ABC):
@@ -135,11 +138,12 @@ class DeviceManager:
     On this line don't get confused. caller = Callable|None is a type annotation.
     But = None is a default value of caller
     """
+
     def __init__(
-            self,
-            power: Electric,
-            caller: Callable | None = None,
-            browser: InternetAccessing | None = None
+        self,
+        power: Electric,
+        caller: Callable | None = None,
+        browser: InternetAccessing | None = None,
     ):
         self.power = power
         self.caller = caller

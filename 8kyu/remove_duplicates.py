@@ -10,11 +10,13 @@ print(remove_duplicates(["apple", "banana", "apple", "cherry", "banana"]))
 # Output: ["apple", "banana", "cherry"]
 """
 
+
 def remove(l):
     new_l = []
     for item in l:
         if item not in new_l:
             new_l.append(item)
     return new_l
+
 
 print(remove(["apple", "banana", "apple", "cherry", "banana"]))

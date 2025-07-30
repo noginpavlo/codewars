@@ -11,9 +11,10 @@ print(most_frequent_even([10, 20, 10, 20, 30, 20]))  # Expected: 20
 
 """
 
-from collections import  Counter
+from collections import Counter
 
 variable = [2, 3, 2, 4, 4, 4, 6, 2]
+
 
 def most_frequent_even(l):
     count = Counter([n for n in l if n % 2 == 0])
@@ -24,5 +25,6 @@ def most_frequent_even(l):
     most_common = count.most_common()
 
     return max([n for n, f in most_common if f == max_frequency])
+
 
 print(most_frequent_even(variable))

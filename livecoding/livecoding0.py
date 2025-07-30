@@ -1,4 +1,5 @@
 import string
+
 """
 The coding challenge comes from this video:
 https://www.youtube.com/watch?v=eVNtrNWdha0
@@ -12,11 +13,21 @@ print(encription_dict)
 
 
 def encript(string: str) -> list[int]:
-    return [key for letter in string for key, value in encription_dict.items() if value == letter]
+    return [
+        key
+        for letter in string
+        for key, value in encription_dict.items()
+        if value == letter
+    ]
 
 
 def decode(some_list: list[int]) -> list[str]:
-    return [value for digit in some_list for key, value in encription_dict.items() if key == int(digit)]
+    return [
+        value
+        for digit in some_list
+        for key, value in encription_dict.items()
+        if key == int(digit)
+    ]
 
 
 encripted_data = encript("cat")

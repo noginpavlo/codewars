@@ -15,10 +15,10 @@ Example:
 
 words = ["apple", "banana", "orange", "umbrella", "grape", "egg"]
 
+
 def longest(wrds):
     return max(len(word) for word in wrds if word[0] in ["a", "e", "o", "u", "y"])
 
 
 result = longest(words)
-print(result) 
-
+print(result)

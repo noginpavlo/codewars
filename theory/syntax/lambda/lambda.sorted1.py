@@ -16,10 +16,12 @@ Example:
 
 words = ["banana", "apple", "kiwi", "grape", "orange"]
 
+
 def vowel_count(w_list):
-    return sorted(w_list, key=lambda x: sum(1 for char in x if char in 'aeiou'), reverse=True)
+    return sorted(
+        w_list, key=lambda x: sum(1 for char in x if char in "aeiou"), reverse=True
+    )
 
 
 result = vowel_count(words)
 print(result)
-

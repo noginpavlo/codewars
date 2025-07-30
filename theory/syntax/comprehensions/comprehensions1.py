@@ -13,9 +13,11 @@ Example:
 """
 
 words = ["hi", "hello", "yo", "python", "ok"]
- 
+
+
 def word_changer(words):
     return [word.upper() if len(word) > 3 else word for word in words]
+
 
 result = word_changer(words)
 print(result)

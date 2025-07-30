@@ -16,5 +16,6 @@ def fibonacci(n):
         numbers_list.append(numbers_list[-1] + numbers_list[-2])
     return numbers_list[-1]
 
+
 result = fibonacci(5)
 print(result)

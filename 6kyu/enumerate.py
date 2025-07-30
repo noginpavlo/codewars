@@ -12,6 +12,7 @@ Ignore capitalization when determining if a character is a duplicate.
 
 from collections import Counter
 
+
 def duplicate_encode(s):
     s = s.lower()
     count_items = dict(Counter(s))
@@ -23,6 +24,7 @@ def duplicate_encode(s):
         else:
             result_string += ")"
     return result_string
+
 
 result = duplicate_encode("recede")
 print(result)
