@@ -42,15 +42,13 @@ def encode(st):
 
 
 def decode(st):
-    return "".join(
-        reversed_key_dict[char] if char in reversed_key_dict else char for char in st
-    )
+    return "".join(reversed_key_dict[char] if char in reversed_key_dict else char for char in st)
 
 
-original_string = "hello"
-encoded_string = encode(original_string)
-print(encoded_string)
+ORIGINAL_STRING = "hello"
+ENCODED_STRING = encode(ORIGINAL_STRING)
+print(ENCODED_STRING)
 
-decoded_string = decode(encoded_string)
+DECODED_STRING = decode(ENCODED_STRING)
 
-print(decoded_string == original_string)
+print(DECODED_STRING == ORIGINAL_STRING)
