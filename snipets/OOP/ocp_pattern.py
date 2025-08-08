@@ -1,13 +1,12 @@
 """
 This is an OCP SOLID pattern that I found in 'Clean Code in Python'.
-The pattern helps to avoid creating a lot of if/elif stkatements by creating classes.
+The pattern helps to avoid creating a lot of if/elif statements by creating classes.
 """
 
 """
 => Basically we need to identify the event type that happened in some system.
 => The system sends formatted in a particular way data.
-We need to read the data and determine
-the event type.
+We need to read the data and determine the event type.
 
                     +----------------------+
                     |  High-Level Module   |
@@ -61,6 +60,8 @@ the event type.
 
 
 class Event:
+    """Conseptual interface"""
+
     def __init__(self, raw_data):
         self.raw_data = raw_data
 
@@ -74,18 +75,14 @@ class LoginEvent(Event):
 
     @staticmethod
     def meets_condition(event_data: dict) -> bool:
-        return (
-            event_data["before"]["session"] == 0 and event_data["after"]["session"] == 1
-        )
+        return event_data["before"]["session"] == 0 and event_data["after"]["session"] == 1
 
 
 class LogoutEvent(Event):
 
     @staticmethod
     def meets_condition(event_data: dict) -> bool:
-        return (
-            event_data["before"]["session"] == 1 and event_data["after"]["session"] == 0
-        )
+        return event_data["before"]["session"] == 1 and event_data["after"]["session"] == 0
 
 
 class UnknownEvent(Event):
