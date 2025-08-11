@@ -22,5 +22,5 @@ def binary_search(array: list[int], n: int) -> int | None:
     return None
 
 
-result = binary_search(my_list, 1)
+result = binary_search(my_list, 101)
 print(result)
