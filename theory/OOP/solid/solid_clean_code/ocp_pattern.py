@@ -72,23 +72,19 @@ class Event:
         return False
 
 
-class LoginEvent(Event):
+class LoinEvent(Event):
     """Low-level Module: LoginEvent, LogoutEvent, UnknownEvent"""
 
     @staticmethod
     def meets_condition(event_data: dict) -> bool:
-        return (
-            event_data["before"]["session"] == 0 and event_data["after"]["session"] == 1
-        )
+        return event_data["before"]["session"] == 0 and event_data["after"]["session"] == 1
 
 
 class LogoutEvent(Event):
 
     @staticmethod
     def meets_condition(event_data: dict) -> bool:
-        return (
-            event_data["before"]["session"] == 1 and event_data["after"]["session"] == 0
-        )
+        return event_data["before"]["session"] == 1 and event_data["after"]["session"] == 0
 
 
 class UnknownEvent(Event):
@@ -100,7 +96,8 @@ class UnknownEvent(Event):
 
 class SystemMonitor:
     """
-    This class identifies events that occur in the system. It is a High-level Module
+    This class identifies events that occur in the system.
+        => It is a High-level Module by the way.
     """
 
     def __init__(self, event_data: dict[str, str]):
