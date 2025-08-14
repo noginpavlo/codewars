@@ -1,2 +1,4 @@
-for i in range(1, 10):
-    print(i)
+try:
+    print("hello world")
+except Exception as e:
+    pass
