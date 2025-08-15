@@ -1,3 +1,6 @@
+from abc import ABC, abstractmethod
+from collections.abc import Mapping
+
 """
 This is an OCP SOLID pattern that I found in 'Clean Code in Python'.
 The pattern helps to avoid creating a lot of if/elif statements by creating classes.
@@ -58,21 +61,30 @@ The schema of the code:
 """
 
 
-class Event:
+class Event(ABC):
     """
-    This is a conseptual interface.
-    Not technical interface that inherit from ABC.
+    This is an abstract base class that validates preconditions
+    and provides interface for subtypes of it.
     """
 
-    def __init__(self, raw_data):
-        self.raw_data = raw_data
+    @staticmethod
+    def validate_preconditions(event_data: dict) -> None:
+        """
+        Validates data structure of event_data defining precondition to meet.
+        """
+
+        if not isinstance(event_data, Mapping):
+            raise ValueError(f"{event_data!r} not in a dict")
+        for moment in ("before", "after"):
+            if moment not in event_data:
+                raise ValueError(f"{moment} not in {event_data!r}")
 
     @staticmethod  # @staticmethod does not take self parameter btw.
-    def meets_condition(event_data: dict[str, str]) -> bool:
-        return False
+    @abstractmethod
+    def meets_condition(event_data: dict) -> bool: ...
 
 
-class LoinEvent(Event):
+class LoginEvent(Event):
     """Low-level Module: LoginEvent, LogoutEvent, UnknownEvent"""
 
     @staticmethod
@@ -89,9 +101,13 @@ class LogoutEvent(Event):
 
 class UnknownEvent(Event):
     """
-    This is a Null Object Pattern. It returns itself(UnknownEven object)
-    and does nothing when event in unknown
+    This is a Null Object Pattern. It ignores event_data on purpose. Still has it thought
+    because required by LSP and the logic of identify_event().
     """
+
+    @staticmethod
+    def meets_condition(event_data: dict) -> bool:  # event_data is not used on purpose
+        return False
 
 
 class SystemMonitor:
@@ -104,10 +120,11 @@ class SystemMonitor:
         self.event_data = event_data
 
     def identify_event(self):
+        """Identifies event if preconditionas are met."""
+
+        Event.validate_preconditions(self.event_data)
         for event_cls in Event.__subclasses__():
-            try:
-                if event_cls.meets_condition(self.event_data):
-                    return event_cls(self.event_data)
-            except KeyError:
-                continue
+            if event_cls.meets_condition(self.event_data):
+                return event_cls(self.event_data)
+
         return UnknownEvent(self.event_data)
