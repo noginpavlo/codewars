@@ -1,0 +1,21 @@
+from time import time
+from functools import wraps
+"""
+Write a basic decorator that measures time.
+"""
+
+def measure_hello_speed(func):
+    @wraps(func)
+
+    def wrapper():
+        now = time.now()
+        func()
+        after = time.now()
+        time_delta = after - now
+        print(f"Time it takes to execute the func is: {time_delta}")
+        return time_delta
+    return wrapper
+
+
+def hello():
+    print("hello to all guys!")
