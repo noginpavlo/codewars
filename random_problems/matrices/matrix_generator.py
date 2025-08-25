@@ -18,11 +18,14 @@ def iterate_over(nested_array: list[list[int]]) -> Generator[tuple, None, None]:
 
 def find_element(array: list[list[int]], target: int) -> tuple | str:
     gen = iterate_over(array)
-    coords = next(
-        (coords for coords, cell in gen if cell == target),
-        f"Target {target} not in the matrix",
-    )
-    return coords
+    try:
+        coords = next(
+            (coords for coords, cell in gen if cell == target),
+            f"Target {target} not in the matrix",
+        )
+        return coords
+    finally:
+        gen.close()  # free recourses that gen holds
 
 
 target_coords = find_element(MATRIX, TARGET)
