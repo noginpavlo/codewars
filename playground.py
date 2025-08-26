@@ -1,6 +1,13 @@
-def if_simple(n: int) -> bool:
-    return not any(n % i == 0 for i in range(2, n))
+from collections.abc import Iterable, Callable
 
 
-result = if_simple(11)
-print(result)
+def filter_emulator(function: Callable, some_iterable: Iterable):
+    for item in some_iterable:
+        if function(item):
+            yield item
+
+
+my_list = [1,2,3,4,5,6]
+result = filter_emulator(lambda x: x % 2 == 0, my_list)
+
+print(list(result))
