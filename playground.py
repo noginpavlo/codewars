@@ -9,5 +9,8 @@ def filter_emulator(function: Callable, some_iterable: Iterable):
 
 my_list = [1,2,3,4,5,6]
 result = filter_emulator(lambda x: x % 2 == 0, my_list)
-
+print(result)
 print(list(result))
+
+
+assert list(filter_emulator(lambda x: x > 1, [1,1,1,2])) == [2]
