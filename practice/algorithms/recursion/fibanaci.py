@@ -1,17 +1,28 @@
 """
 Basic solution of fibanaci problem.
+Calculate fibanaci sequence using recursion:
+Function must take number of addition iterations n, first and second number a and b.
+
+Example:
+fib(n=5, a=10, b=20)
+
+Output:
+30
+50
+80
+130
+210
+
 """
 
-from functools import lru_cache
 
-
-@lru_cache  # caches already computed values (LRU: least recently used)
-def fibanaci(n):
-    if n == 0:
-        return 0
+def fib(n: int, a: int, b: int) -> int:
     if n == 1:
-        return 1
-    return fibanaci(n - 1) + fibanaci(n - 2)
+        return a
+    if n == 2:
+        return b
+    return fib(n - 1, b, a + b)
 
 
-print(fibanaci(100))
+result = fib(7, 10, 20)
+print(result)
