@@ -1,9 +1,9 @@
-from collections.abc import Generator
-
 """
 Print the nested list.
 Use yield from for that.
 """
+
+from collections.abc import Generator
 
 nested = [[1, 2], [3, 4, 5], [6]]
 

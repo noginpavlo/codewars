@@ -1,16 +1,8 @@
-from collections.abc import Iterable, Callable
+def infinite_recursion(n):
+    if n < 1:
+        return
+    print(n)
+    return infinite_recursion(n - 1)
 
 
-def filter_emulator(function: Callable, some_iterable: Iterable):
-    for item in some_iterable:
-        if function(item):
-            yield item
-
-
-my_list = [1,2,3,4,5,6]
-result = filter_emulator(lambda x: x % 2 == 0, my_list)
-print(result)
-print(list(result))
-
-
-assert list(filter_emulator(lambda x: x > 1, [1,1,1,2])) == [2]
+infinite_recursion(3)
