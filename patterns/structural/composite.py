@@ -5,14 +5,15 @@ composite.py
 Composite Design Pattern
 -------------------------
 Definition:
-The Composite pattern allows you to treat individual objects and compositions of objects
-uniformly. It is used to represent part–whole hierarchies (e.g., trees).
+The pattern allows you to have my structures in the big class and instantiate and object that 
+will include only some of those structures. You can select what structures will be there.
 
 Consists of:
-1. Component (interface/abstract base class) – declares the common operations.
-2. Leaf (concrete class) – represents simple (atomic) objects in the structure.
-3. Composite (concrete class) – represents complex objects that can hold children.
-4. Client– works with objects through the common interface, without caring
+1. COMPONENT (interface) – declares the common operations.
+Declare it first then tailor the code to this standard.
+2. LEAF (concrete class) – represents simple objects in the structure.
+3. COMPOSITE (concrete class) – represents complex objects that can hold children.
+4. CLIENT– works with objects through the common interface, without caring
    whether it deals with a leaf or a composite.
 
 When to use:
