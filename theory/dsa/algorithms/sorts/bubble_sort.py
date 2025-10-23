@@ -1,10 +1,15 @@
 """
 BUBBLE SORT ALGORITHM
 
->>> 1. Compare the first two elements.
+!!!This is mainly educational algorithm and you should use QUICK SORT or INSERT SORT for interviews.
+
+This algorithm sorting an array of elements.
+
+The algorytmd does this:
+>>> 1. Compare the last two elements.
 >>> 2. If the first is greater than the second, swap them.
 >>> 3. Move to the next pair, repeat.
->>> 4. After the first pass, the largest element is at the end.
+>>> 4. After the first iteration, the largest element is at the end.
 >>> 5. Repeat the process for the remaining elements.
 """
 
@@ -21,7 +26,7 @@ student_scores = [88, 95, 70, 100, 65, 77, 92]
 def bubble_sort(some_list: list[int]) -> list[int]:
     len_l = len(some_list)
     for i in range(len_l):
-        for j in range(0, len_l - i - 1):
+        for j in range(len_l - i - 1):
             if some_list[j] < some_list[j + 1]:
                 some_list[j], some_list[j + 1] = some_list[j + 1], some_list[j]
     return some_list

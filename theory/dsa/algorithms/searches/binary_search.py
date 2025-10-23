@@ -1,16 +1,15 @@
 """
-->Binary search takes sorted list of elements as input. It needs to be sorted.
-->It returns an index of the searched element or None.
+=>Binary search takes SORTED list of elements as input. IT NEEDS TO BE SORTED.
+=>It returns an index of the searched element or None.
 
 => The idea of the algorithm is to choose a value exactly in the middle of the array and
-ask an conditional questtion about the searched value: is it bigger or smaller the the mid number?
-If bigger then the searched value is on the left,
-if smaller -- on the right.
+ask an conditional questtion about the searched value: is it bigger or smaller than the mid number?
+If bigger then the searched value is on the left, if smaller -- on the right.
 
 Initial List:
-Index:       0   1   2   3   4   5   6   7   8   9   10
-           [ 1 | 3 | 5 | 7 | 9 |11 |13 |15 |17 |19 |21 ]
-                          ↑
+Index:       0   1   2   3   4   5   6    7    8   9  10
+           [ 1 | 3 | 5 | 7 | 9 |11 |13 | 15 | 17 |19 |21 ]
+                         ↑
                        mid=5 (11)
                        13 > 11 → search right
 
