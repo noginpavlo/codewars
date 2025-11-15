@@ -1,33 +1,83 @@
+from abc import ABC, abstractmethod
+
+
+class EmployeeFactory(ABC):
+    """Abstract factory for families creation."""
+
+    @abstractmethod
+    def create_manager(self): ...
+
+    @abstractmethod
+    def create_developer(self): ...
+
+
+class FullTimeEmployeeFactory(EmployeeFactory):
+    """Concrete factroy for Full-time employees creation."""
+
+    def create_manager(self, name, email, salary, team_name) -> Manager:
+        salary_strategy = FullTimePayment(salary)
+        return Manager(name, email, salary_strategy, team_name)
+
+    def create_developer(self, name, email, salary, programming_language) -> Developer:
+        salary_strategy = FullTimePayment(salary)
+        return Developer(name, email, salary_strategy, programming_language)
+
+
+class PartTimeEmployeeFactory(EmployeeFactory):
+    """Concrete factroy for Part-time employees creation."""
+
+    def create_manager(self, name, email, hourly_rate, hours_worked, team_name):
+        salary_strategy = PartTimePayment(hourly_rate, hours_worked)
+        return Manager(name, email, salary_strategy, team_name)
+
+    def create_developer(self, name, email, hourly_rate, hours_worked, programming_language):
+        salary_strategy = PartTimePayment(hourly_rate, hours_worked)
+        return Developer(name, email, salary_strategy, team_name)
+
+
+class Payment(ABC):
+
+    @abstractmethod
+    def process_payment(self): ...
+
+
+class FullTimePayment(Payment):
+
+    def __init__(self, salary):
+        self.salary = salary
+
+    def process_payment(self, fixed_salary):
+        return salary
+
+
+class PartTimePayment(Payment):
+
+    def __init__(self, hours_worked, hourly_rate):
+        self.hours_worked = hours_worked
+        self.hourly_rate = hourly_rate
+
+    def process_payment(self, fixed_salary):
+        return self.hours * self.hourly_rate
+
+
 class Employee:
-    """This is a base class for all employees"""
-
-    def __init__(self, name, email):
-        self.name = name
-        self.email = email
-
-    def __str__(self):
-        return f"{self.name} ({self.email})"
-
-
-class RegularEmployee(Employee):
     """
     This is a base class for regular employees
     (who work full-time on a long term basis and have a fixed salary)
     """
 
-    def __init__(self, name, email, salary):
-        super().__init__(name, email)
-        self.salary = salary
+    def __init__(self, email, salary_strategy):
+        self.salary_strategy = salary_strategy
 
     def calculate_payment(self):
-        return self.salary
+        return self.salary_strategy.process_payment()
 
 
-class RegularDeveloperEmployee(RegularEmployee):
+class Developer(Employee):
     """This is a class for regular developers"""
 
-    def __init__(self, name, email, salary, programming_language):
-        super().__init__(name, email, salary)
+    def __init__(self, name, email, programming_language):
+        super().__init__(name, email, salary_strategy)
         self.programming_language = programming_language
         self.tasks = []  # fifo queue
 
@@ -43,7 +93,7 @@ class RegularDeveloperEmployee(RegularEmployee):
         print(f"{self.name} completed all tasks")
 
 
-class RegularManagerEmployee(RegularEmployee):
+class Manager(Employee):
     """This is a class to regulrar managers"""
 
     def __init__(self, name, email, salary, team_name):
@@ -76,19 +126,6 @@ class RegularManagerEmployee(RegularEmployee):
 
 
 # TODO: add support for contractor employees (developers and managers) !!!
-class ContractorEmployee(Employee):
-    """
-    This is a base class for contractor employees
-    (who work part-time on a sort-term basis and have and hourly salary)
-    """
-
-    def __init__(self, name, email, hourly_rate):
-        super().__init__(name, email)
-        self.hourly_rate = hourly_rate
-        self.hours_worked = 0
-
-    def calculate_payment(self):
-        return self.hours_worked * self.hourly_rate
 
 
 if __name__ == "__main__":
