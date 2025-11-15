@@ -1,5 +1,6 @@
 class Employee:
-    # this is a base class for all employees
+    """This is a base class for all employees"""
+
     def __init__(self, name, email):
         self.name = name
         self.email = email
@@ -9,7 +10,11 @@ class Employee:
 
 
 class RegularEmployee(Employee):
-    # this is a base clas for regular empliyees (who work full-time on a long term basis and have a fixed salary)
+    """
+    This is a base class for regular employees
+    (who work full-time on a long term basis and have a fixed salary)
+    """
+
     def __init__(self, name, email, salary):
         super().__init__(name, email)
         self.salary = salary
@@ -19,7 +24,8 @@ class RegularEmployee(Employee):
 
 
 class RegularDeveloperEmployee(RegularEmployee):
-    # this hs a class for regular developers
+    """This is a class for regular developers"""
+
     def __init__(self, name, email, salary, programming_language):
         super().__init__(name, email, salary)
         self.programming_language = programming_language
@@ -38,7 +44,8 @@ class RegularDeveloperEmployee(RegularEmployee):
 
 
 class RegularManagerEmployee(RegularEmployee):
-    # this is a class to regulrar managers
+    """This is a class to regulrar managers"""
+
     def __init__(self, name, email, salary, team_name):
         super().__init__(name, email, salary)
         self.team_name = team_name
@@ -47,11 +54,11 @@ class RegularManagerEmployee(RegularEmployee):
 
     def add_task_to_team(self, task):
         self.team_tasks.append(task)
-        print(f'Task: {task} is added to the team {self.team_name}')
+        print(f"Task: {task} is added to the team {self.team_name}")
 
     def add_developer_to_team(self, regular_developer):
         self.developers.append(regular_developer)
-        print(f'{regular_developer.name} is added to the team {self.team_name}')
+        print(f"{regular_developer.name} is added to the team {self.team_name}")
 
     def assign_tasks_to_developers(self):
         print(f"Team {self.team_name} is working on the following tasks: {self.team_tasks}")
@@ -70,7 +77,11 @@ class RegularManagerEmployee(RegularEmployee):
 
 # TODO: add support for contractor employees (developers and managers) !!!
 class ContractorEmployee(Employee):
-    # this is a base class for contractor employees (who work part-time on a sort-term basis and have and hourly salary)
+    """
+    This is a base class for contractor employees
+    (who work part-time on a sort-term basis and have and hourly salary)
+    """
+
     def __init__(self, name, email, hourly_rate):
         super().__init__(name, email)
         self.hourly_rate = hourly_rate
@@ -105,7 +116,7 @@ if __name__ == "__main__":
     # finish the sprint once all the tasks are complenetd
     regular_manager.finish_sprint()
 
-    #pay employtees for their work
-    print(f'{regular_manager.name} got payment: {regular_manager.calculate_payment()}')
-    print(f'{regular_developer_1.name} got payment: {regular_developer_1.calculate_payment}')
-    print(f'{regular_developer_2.name} got payment: {regular_developer_2.calculate_payment}')
+    # pay employtees for their work
+    print(f"{regular_manager.name} got payment: {regular_manager.calculate_payment()}")
+    print(f"{regular_developer_1.name} got payment: {regular_developer_1.calculate_payment}")
+    print(f"{regular_developer_2.name} got payment: {regular_developer_2.calculate_payment}")
